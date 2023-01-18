@@ -75,11 +75,15 @@ class RichPathAnimator {
         interpolator?.let { animatorSet.interpolator = it }
 
         animatorSet.addListener(object : Animator.AnimatorListener {
-            override fun onAnimationStart(animation: Animator?) {
+            override fun onAnimationStart(animation: Animator, isReverse: Boolean) {
                 animationListener?.onStart()
             }
 
-            override fun onAnimationEnd(animation: Animator?) {
+            override fun onAnimationStart(animation: Animator) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onAnimationEnd(animation: Animator, isReverse: Boolean) {
                 animationListener?.onStop()
                 next?.let {
                     it.prev = null
@@ -87,10 +91,14 @@ class RichPathAnimator {
                 }
             }
 
-            override fun onAnimationCancel(animation: Animator?) {
+            override fun onAnimationEnd(animation: Animator) {
+                TODO("Not yet implemented")
             }
 
-            override fun onAnimationRepeat(animation: Animator?) {
+            override fun onAnimationCancel(animation: Animator) {
+            }
+
+            override fun onAnimationRepeat(animation: Animator) {
             }
         })
 
